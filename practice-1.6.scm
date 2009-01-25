@@ -18,6 +18,12 @@
 (define (square x)
   (* x x))
 
+;(define (sqrt-iter guess x)
+;  (if (good-enough? guess x)
+;      guess
+;      (sqrt-iter (improve guess x)
+;                 x)))
+
 (define (sqrt-iter guess x)
   (new-if (good-enough? guess x)
           guess
@@ -27,4 +33,14 @@
 (define (sqrt x)
   (sqrt-iter x 1.0))
 
-(sqrt 3)
+;(sqrt 3)
+
+(define (sqrt-iter2 guess x)
+  (cond ((good-enough? guess x) guess)
+        (else (sqrt-iter2 (improve guess x) x))))
+
+(define (sqrt2 x)
+  (sqrt-iter2 x 1.0))
+
+(sqrt2 3)
+
